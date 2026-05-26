@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上田篤史 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>上田篤史 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ドクターズ株式会社</a>
+  <a href="#k2">2. 株式会社BuySell Technologies</a>
+  <a href="#k3">3. 株式会社じげん</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">経営企画管掌幹部候補（事業開発/M&A・IPO）</span><span class="badge badge-blue">未上場（IPO準備フェーズ）</span></div>
+  <div class="co-name">ドクターズ株式会社</div>
+  <div class="co-url"><a href="https://doctors-inc.jp/" target="_blank">https://doctors-inc.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区芝公園2-3-6 PMO浜松町Ⅱ 5階</td></tr><tr><th>設立</th><td>2016年9月</td></tr><tr><th>上場区分</th><td>未上場（IPO準備フェーズ）</td></tr><tr><th>累積調達額</th><td>約17.4億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>医師が創業した医療DXのスタートアップで、約40万人の医療従事者ネットワークを基盤とした圧倒的な事業基盤</li><li>IPO準備フェーズの企業で、M&Aや資本業務提携を積極活用した非連続成長戦略を推進</li><li>経済産業省J-Startup採択企業として外部からも高く評価される将来性</li><li>年収1,000万円〜2,000万円の高待遇で社長の右腕として経営に参画可能</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「デジタルの力を活用し、どこにいても安心して健康に生きられる社会を実現すること」をビジョンに掲げる医療DXのリーディングカンパニー。脳神経外科医である創業者・柳川貴雄氏が、医療現場の課題を解決するために設立。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>「デジタルの力を活用し、どこにいても安心して健康に生きられる社会を実現すること」</strong>をビジョンに掲げ、医療現場の医師の力と民間企業の技術・ネットワークを融合させた医療DXのエコシステム構築を目指しています。</p><p><strong>創業者・柳川貴雄氏</strong>は聖マリアンナ医科大学医学部卒業の脳神経外科医。現役医師として医療の最前線に立つ中で医療現場が抱える限界や課題を痛感し、一人の医師が救える命の数には限りがあるからこそ、デジタルの圧倒的な力を掛け合わせることで社会を変革したいという熱い想いから2016年に同社を創業しました。</p><p><strong>事業内容：</strong></p><ul><li><strong>DoctorsHub™（Doctors Cloud®）</strong>：企業がデジタルヘルスサービスを『作る』際、専門医が現場の知見を活かして開発を支援</li><li><strong>Doctors Next®</strong>：開発された医療・ヘルスケアサービスを医療現場へ確実に浸透させ、流通・拡販を支援する『拡げる』サービス</li><li><strong>Doctors Station®</strong>：オンライン初期相談からトリアージ、オンライン診療への流れをフルパッケージで一般企業等へ『届ける』サービス</li></ul><p><strong>約40万人の医療従事者と約700名の専門医ネットワーク</strong>を基盤とした圧倒的な事業基盤を有し、経済産業省J-Startup採択やHealthtech Summit優秀賞受賞など外部からも高く評価されています。</p><p>今後は専門医ネットワークを原動力に、M&Aや資本業務提携を積極的に駆使して医療機関・関連企業の買収を視野に入れた非連続な成長戦略を推進する予定です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 経営企画管掌幹部候補（事業開発/M&A・IPO）</div>
+          <div class="job-preview">社長の右腕として医療DX変革をリードし、M&A戦略とIPO準備を主導するポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong></p><p>デジタルヘルスの未来を切り拓くドクターズは今、第二の創業期とも言える爆発的な成長フェーズを迎えています。私たちが掲げる「誰もが安心して生きられる社会」という壮大な理想は、自社一社の歩みだけでは成し得ません。この医療変革を圧倒的なスピードで現実のものとするため、医療機関や関連企業との資本提携、そして劇的な非連続成長をもたらすM&A戦略を社長の右腕として自ら牽引し、組織の運命をダイナミックに動かしていく至高のプロフェッショナルを必要としています。</p><p><strong>【職務内容】</strong></p><p>ドクターズは、約40万人の医療従事者と約7.5万施設の医療機関、さらに大学教授クラスを含む約700名の高度専門医ネットワークを有する、日本有数の医療ネットワークを基盤とした企業です。このネットワークを活かし、医療現場の知見と企業の技術・サービスをつなぐことで、医療DX推進や医療機関支援など、医療業界の課題解決に取り組んでいます。ドクターズは、ビジネスとメディカルの橋渡しを通じて、医療業界の持続的な発展とイノベーションの創出を支援しています。</p><p><strong>【求めるスキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 経営企画・戦略立案経験3年以上</li><li><span class='tag tag-must'>MUST</span> PL/BS/CFの財務会計知識</li><li><span class='tag tag-must'>MUST</span> プロジェクト推進力</li><li><span class='tag tag-want'>WANT</span> グループ子会社管理経験</li></ul><p><strong>【年収】</strong></p><p>1,000万円〜2,000万円（年俸制、月額75万円〜83.3万円、45時間分の固定残業代含む）</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区</span><span class="pill">🚇 大門駅徒歩2分</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://doctors-inc.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">経営企画/経営戦略</span><span class="badge badge-blue">東証グロース市場上場</span></div>
+  <div class="co-name">株式会社BuySell Technologies</div>
+  <div class="co-url"><a href="https://buysell-technologies.com/" target="_blank">https://buysell-technologies.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区四谷4-28-8 PALTビル</td></tr><tr><th>設立</th><td>2001年1月</td></tr><tr><th>上場区分</th><td>東証グロース市場上場（証券コード：7685）</td></tr><tr><th>時価総額</th><td>約250億〜300億円規模</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>売上高600億円突破、営業利益率5-7%の安定した高収益リユース事業を展開</li><li>東証グロース上場後、すでに5件のM&Aを成功させ、さらなる統合戦略を加速中</li><li>「誰かの不要なものを誰かの必要なものへ」のミッションで循環型社会を実現</li><li>テクノロジーとリアル（出張訪問）を融合した独自の競争優位性</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「誰かの不要なものを誰かの必要なものへ」をミッションに掲げ、着物やブランド品、骨董品を中心としたリユース事業「BUYSELL（バイセル）」を展開。売上高600億円を突破し、東証グロース市場に上場。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>ミッション：「誰かの不要なものを誰かの必要なものへ」</strong><br><strong>ビジョン：「人を超え、時を超え、大切なものをつなぐ架け橋となる」</strong></p><p><strong>創業者・谷口亮介氏</strong>は1970年代後半生まれ。弱冠20代前半でリユースビジネスの可能性に着目し、2001年に前身となる株式会社エースを設立。日本の家庭の中に使われぬまま静かに眠っている無数の「思い出の品」や「価値ある財産」が捨てられていく現実に強い課題感を抱き、「まだ使える美しい着物や宝飾品に、もう一度命を吹き込みたい」という熱烈な想いから事業を立ち上げました。</p><p><strong>現社長・岩田匡平氏</strong>は1984年生まれ、京都大学法学部卒業。株式会社リクルートを経て2016年に代表取締役社長CEOに就任し、2019年に東証マザーズ（現グロース）上場を果たしました。</p><p><strong>事業内容：</strong></p><ul><li><strong>出張買取サービス</strong>：査定員が顧客の自宅へ直接訪問し、丁寧な鑑定を通じて不要な資産を即座に現金化・循環</li><li><strong>自社EC・オークション・海外販売</strong>：独自の出品管理システム「Cosmos」を用い、買い取った商品を国内外の最適なB2B/B2Cチャネルでマッチング</li></ul><p><strong>売上高600億円突破、営業利益率約5%〜7%</strong>の安定した高収益体質を実現。上場後すでに5件のM&Aを実行し、今後さらに加速して総合リユース・周辺領域でのシェア圧倒的No.1を目指しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【経営企画統括本部】経営企画/経営戦略</div>
+          <div class="job-preview">売上600億円突破企業で攻めのM&A戦略を主導し、さらなる非連続成長を実現</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong></p><p>売上高600億円を突破し、なおも業界の覇者を狙い突き進むBuySell Technologies。これまでの連続的な成長を超え、グループ全体でさらなる巨大変革を起こす鍵となるのが「攻めのM&A」です。上場後5件の統合を成功させてきた私たちが、次なるステージへ向けてさらに歩みを加速させるため、経営陣の最至近距離で全社の命運を握る羅針盤となり、主体的に組織の壁を打ち破っていく不屈の変革リーダーを求めています。</p><p><strong>【職務内容】</strong></p><p>グループ全体で長期成長を成し遂げるための中期経営戦略・事業戦略の策定を通じて、全社をリードするポジションです。</p><p><strong>【求めるスキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 経営企画・事業戦略立案経験3年以上</li><li><span class='tag tag-must'>MUST</span> 事業計画策定・KPIマネジメントを通じた一気通貫の課題解決・実行力</li></ul><p><strong>【年収】</strong></p><p>1,000万円〜1,500万円（月額80万円〜、固定残業代13.3万円含む）</p>
+        <div class="meta-pills"><span class="pill">📍 東京都新宿区</span><span class="pill">🚇 新宿御苑前駅徒歩6分</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://buysell-technologies.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">経営戦略部部長候補</span><span class="badge badge-blue">東証プライム市場上場</span></div>
+  <div class="co-name">株式会社じげん</div>
+  <div class="co-url"><a href="https://zigexn.co.jp/" target="_blank">https://zigexn.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門3-4-8</td></tr><tr><th>設立</th><td>2006年6月</td></tr><tr><th>上場区分</th><td>東証プライム市場上場（証券コード：3679）</td></tr><tr><th>時価総額</th><td>約400億〜500億円規模</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>営業利益率20-25%の驚異的な高収益・高筋肉質のビジネスモデル</li><li>史上最年少世代で東証プライム上場を果たした平尾丈氏が創業・経営する成長企業</li><li>M&Aを主軸とした非連続な事業拡大で更なる飛躍を目指す</li><li>Great Place to Work®連続ランクイン、Forbes ASIA選出など外部評価も高い</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「生活機会（Life Onyx）の最大化」をミッションに掲げ、求人、不動産、旅行、自動車など人生の大きな決断を支える「ライフメディアプラットフォーム事業」を展開。営業利益率20-25%の高収益体質。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>ミッション：「生活機会（Life Onyx）の最大化」</strong><br><strong>コアバリュー：「Update Your Universe」</strong>を掲げ、社会の不条理や情報の非対称性を解消し、一人ひとりの人生の選択肢を広げることを目指しています。</p><p><strong>創業者・平尾丈氏</strong>は1982年生まれ、慶應義塾大学環境情報学部卒業。学生時代に2度の起業を経験し、株式会社リクルートで最年少で社内起業家コンテストを受賞。25歳でじげんの前身企業の代表取締役に就任し、MBOを経て独立。史上最年少世代で東証マザーズ上場、のちに東証一部（現プライム）へ市場変更を果たしました。</p><p>世の中に存在するあらゆる「格差」や、情報が行き届かないことで生まれる「不条理な機会損失」をこの世から力強く一掃したいという強烈な義憤と使命感が原動力となり、一人ひとりが人生の可能性を最大限に開花させられる社会を作るため創業しました。</p><p><strong>事業内容：</strong></p><p>求人、不動産、旅行、自動車など、人生の大きな決断を支える多様な領域で、複数のメディア情報を統合した「ライフメディアプラットフォーム事業」を展開。複数の専門メディア情報を一括で検索・比較・一元管理できるシステムを提供し、ユーザーには最適な「生活機会」を、クライアントには圧倒的な送客効率の向上という価値をワンストップで提供しています。</p><p><strong>営業利益率約20%〜25%</strong>の驚異的な高収益・高筋肉質のビジネスモデルを維持。今後はM&Aを主軸に置いた非連続な事業拡大を志向し、HR領域（特に薬剤師などのエッセンシャルワーカー系紹介事業）およびトラベル領域（国内外のBtoB旅行関連SaaS等）を強化予定です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【経営戦略部】経営戦略部部長候補※経営企画、M&A・PMIを推進※confidential</div>
+          <div class="job-preview">社長直轄で非連続成長を実現するM&A・PMI戦略を主導する部長候補ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong></p><p>圧倒的な高収益を誇り、東証プライム市場を駆け抜ける「じげん」の進化は止まりません。私たちが求めるのは、IPOをゴールとしない、その先の限界を突破する「真の非連続成長」です。社長直轄の実行部隊として、潤沢な資金とノウハウを武器に、未開の市場をこじ開ける求心力のあるM&AとPMIを主導する。圧倒的なスピードとプレッシャーを楽しみながら、自らの手で企業を、そして時代をダイナミックにバリューアップさせていく熱き野心家を待っています。</p><p><strong>【職務内容】</strong></p><p>経営・財務・投資の中核機能を担う経営戦略部において、部長候補を募集いたします。経営管理、経営推進といった各コーポレート部門とも密に連携しながら、社長直轄で事業拡大を推進いただきます。経営目線を持ちながら経営戦略部をマネジメントし、リードしていただくことができるポジションです。</p><p><strong>【求めるスキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> マネジメント経験</li><li><span class='tag tag-must'>MUST</span> 投資銀行、VC、戦略コンサル、上場企業等でのM&A（戦略～実行）や資金調達経験</li></ul><p><strong>【年収】</strong></p><p>800万円〜1,500万円（月給66.6万円〜125万円、45時間分の固定残業代含む、昇給年4回）</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区虎ノ門</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✈️ PMI時出向あり</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://zigexn.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが上田篤史 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
